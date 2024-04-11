@@ -58,7 +58,7 @@ namespace RollHelper
 
             for (int i = 0; i < CubeCount; i++)
             {
-                cubes.Add(rand.Next(1, 11));
+                cubes.Add(rand.Next(1, 8) > 3 ? rand.Next(1, 6) : rand.Next(6, 11));
             }
 
             OldRolls.Insert(0, new CubeModel
