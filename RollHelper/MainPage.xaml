@@ -25,10 +25,10 @@
                     HorizontalAlignment="Center">
             <TextBlock Text="Введите количество кубов:" Margin="5"
                        TextWrapping="Wrap"/>
-            <TextBox x:Name="CubeBox" Margin="5" KeyDown="CubeBox_OnKeyDown"
-                     Text="{Binding CubeCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="CubeBox" Margin="5" KeyDown="CubeBox_OnKeyDown"/>
             <Button Width="100" Height="20" Content="Крутить" Margin="5"
-                    Command="{Binding RollCommand}" x:Name="RollButton">
+                    x:Name="RollButton" Command="{Binding RollCommand}" 
+                    CommandParameter="{Binding ElementName=CubeBox, Path=Text}">
             </Button>
         </StackPanel>
 

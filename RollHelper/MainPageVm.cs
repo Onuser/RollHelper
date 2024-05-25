@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -15,17 +16,17 @@ namespace RollHelper
     public class MainPageVm : INotifyPropertyChanged
     {
 
-        private int _cubeCount = 0;
+        //private int _cubeCount = 0;
 
-        public int CubeCount
-        {
-            get => _cubeCount;
-            set
-            {
-                _cubeCount = value;
-                OnPropertyChanged();
-            }
-        }
+        //public int CubeCount
+        //{
+        //    get => _cubeCount;
+        //    set
+        //    {
+        //        _cubeCount = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         private ObservableCollection<CubeModel> _oldRolls;
 
@@ -53,6 +54,18 @@ namespace RollHelper
 
         private void Roll(object obj)
         {
+            int CubeCount;
+            if(!int.TryParse(obj.ToString(), out CubeCount))
+            {
+                MessageBox.Show("Введено не целое число.");
+                return;
+            }
+
+            if(CubeCount < 1 || CubeCount > 50)
+            {
+                MessageBox.Show("Число не попадает в промежуток от 1 до 50");
+                return;
+            }
 
             List<int> cubes = new List<int>();
 
